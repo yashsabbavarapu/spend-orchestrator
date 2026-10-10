@@ -1,0 +1,29 @@
+# spend-orchestrator run configuration. Every guardrail lives here, none in code.
+
+run_name: q3-demand-gen-demo
+
+# Weekly budget to split across channels, in dollars.
+total_budget: 30000
+
+# No live channel moves more than this percent up or down in one cycle.
+max_swing_pct: 25
+
+# Efficiency is pooled pipeline-per-dollar over this many most recent weeks.
+lookback_weeks: 3
+
+# A channel whose weekly pipeline-per-dollar sits below the threshold for
+# consecutive_weeks reported weeks in a row is paused at $0.
+kill_rule:
+  threshold_pipeline_per_dollar: 0.5
+  consecutive_weeks: 2
+
+channels:
+  - name: linkedin_abm
+    label: LinkedIn ABM
+    min_learning_budget: 3000
+  - name: paid_search
+    label: Paid search
+    min_learning_budget: 3000
+  - name: niche_community
+    label: Niche community sponsorship
+    min_learning_budget: 2000

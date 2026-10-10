@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.mypy_cache/
+.pytest_cache/
+*.db
+report.md
+.DS_Store
+*.egg-info/
+allocations.md
